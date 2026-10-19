@@ -1,18 +1,18 @@
 {% set name = "wagtail-sb-admin-interface" %}
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/wagtail_sb_admin_interface-{{ version }}.tar.gz
-  sha256: dc847e223eebe177711e1dab700714fcd1966df26818f46eb88ec455be1a12ff
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/wagtail_sb_admin_interface-{{ version }}.tar.gz
+  sha256: c6771dd4da9b35448a5ef30e35326d305a829bfdfd32fe3184d977e8315bc302
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -21,9 +21,9 @@ requirements:
     - pip
   run:
     - python >={{ python_min }},<4.0.0
-    - django <5.0
+    - django >=4.2,<7.0
     - django-colorfield <1.0.0
-    - wagtail <6.0
+    - wagtail >=5.2,<9.0
 
 test:
   imports:
